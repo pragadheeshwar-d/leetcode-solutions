@@ -15,3 +15,15 @@ public:
             {'6', "mno"},
             {'7', "pqrs"},
             {'8', "tuv"},
+            {'9', "wxyz"}
+        };
+        
+        backtrack(digits, 0, "", res, digitToLetters);
+        
+        return res;        
+    }
+
+    void backtrack(const string& digits, int idx, string comb, vector<string>& res, const unordered_map<char, 
+    string>& digitToLetters) {
+        if (idx == digits.length()) {
+            res.push_back(comb);
