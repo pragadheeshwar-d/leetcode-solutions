@@ -6,42 +6,44 @@ Given the input constraints for Roman To Integer, compute the optimal result.
 
 ## Approach
 
-The solution utilizes an auxiliary hash map to store previously visited elements and their metadata, allowing instant O(1) lookups instead of an O(n²) nested loop.
+The solution maps the 7 standard Roman numerals to integer values. It iterates through the string with a lookahead of one position. If the current numeral has a smaller value than the subsequent numeral, it subtracts the current value from the running sum (subtractive case); otherwise, it adds the current value. It returns the accumulated total.
 
 ## How the Solution Works
 
-1. Instantiate an empty hash table.
-2. Traverse the input sequentially.
-3. For each element, check if the required counterpart exists in the table.
-4. If found, return the match; otherwise, insert the current element.
+1. **Symbol Mapping:** Define hash map `mp` mapping `'I'`, `'V'`, `'X'`, `'L'`, `'C'`, `'D'`, `'M'` to their values.
+2. **Lookahead Check:** For each index `i`, compare `mp[s[i]]` with `mp[s[i + 1]]`.
+3. **Subtractive Rule:** If `i + 1 < n` and `mp[s[i]] < mp[s[i + 1]]`, subtract `mp[s[i]]`.
+4. **Additive Rule:** Otherwise, add `mp[s[i]]`.
+5. **Return Total:** Return the accumulated integer answer.
 
 ## Algorithm
 
-1. Initialize an empty hash table `seen`.
-2. For each index `i` and element in the input:
-3. Compute required counterpart (e.g. `complement = target - nums[i]`).
-4. If counterpart is in `seen`, return the solution pair.
-5. Insert current element into `seen`.
+1. Define symbol map `mp` for standard Roman numerals.
+2. Initialize `ans = 0`.
+3. For `i = 0` to `s.length() - 1`:
+4.   If `i + 1 < s.length()` and `mp[s[i]] < mp[s[i + 1]]`: `ans -= mp[s[i]]`.
+5.   Else: `ans += mp[s[i]]`.
+6. Return `ans`.
 
 ## Why This Works
 
-Because the hash table retains all previously seen elements, checking for the required complement occurs in average O(1) time, ensuring that the second element of the pair will instantly detect the first.
+Roman numerals are naturally additive except when a smaller value precedes a larger value (subtraction). Looking ahead by one character deterministically isolates subtractive pairs in a single pass without multi-character tokenization.
 
 ## Complexity
 
 ### Time Complexity
 
-`O(n)` — Where n is the number of elements. Performs a single linear traversal with average O(1) hash table insertions and lookups.
+`O(n)` — Where n is the length of the Roman numeral string. Traversed once linearly with O(1) hash map lookups.
 
 ### Space Complexity
 
-`O(n)` — Auxiliary hash map storing up to n key-value mappings in the worst case.
+`O(1)` — Constant auxiliary space; the symbol hash table stores exactly 7 fixed Roman characters.
 
 ## Edge Cases
 
-- **Duplicate Values:** Handling repeated values with distinct indices.
-- **Negative & Zero Elements:** Values summing to zero or negative targets.
-- **Same Element Re-use:** Preventing an element from pairing with itself.
+- **Single Numeral:** Strings of length 1 return the mapped value immediately.
+- **Subtractive Combinations:** Correctly processes all standard subtractive pairs (`IV`, `IX`, `XL`, `XC`, `CD`, `CM`).
+- **Consecutive Additive Symbols:** Evaluates identical repeating characters (`III`, `XXX`) additively.
 
 ## Solution
 
