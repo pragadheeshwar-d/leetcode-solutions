@@ -6,41 +6,47 @@ Given the input constraints for 4Sum, compute the optimal result.
 
 ## Approach
 
-The solution maintains two boundary pointers initialized at opposite ends of the input. At each iteration, it evaluates the candidate configuration and greedily advances the pointer that limits the optimal outcome inward.
+The solution sorts the array in non-decreasing order to enable two-pointer convergence and duplicate elimination. It uses nested loops to fix leading anchors while skipping duplicate values. For each pair of anchors, it runs a two-pointer search on the remaining subarray, incrementing the left pointer or decrementing the right pointer based on the sum relative to the target.
 
 ## How the Solution Works
 
-1. **Initialize Boundaries:** Set `left = 0` and `right = n - 1` spanning the widest configuration.
-2. **Evaluate State:** Compute metrics using the current boundaries.
-3. **Inward Step:** Advance the limiting boundary pointer towards the center.
-4. **Loop:** Repeat until pointers converge (`left < right`).
+1. **Sort Array:** Sort `nums` to structure the search space monotonically.
+2. **Anchor Loops:** Iterate outer indices `i` and `j`, skipping contiguous duplicates.
+3. **Two-Pointer Search:** Initialize `k = j + 1` and `l = n - 1`. While `k < l`:
+   - Compute 4-element sum using 64-bit integer (`long long`) to prevent overflow.
+   - If `sum == target`: record quadruplet, advance `k++` and `l--`, and skip identical values.
+   - If `sum < target`: increment `k`.
+   - If `sum > target`: decrement `l`.
+4. **Return Results:** Return accumulated unique tuples.
 
 ## Algorithm
 
-1. Initialize `left = 0` and `right = n - 1`.
-2. While `left < right`: evaluate current candidate value.
-3. Advance the pointer with the limiting value (`left++` or `right--`).
-4. Return the optimal recorded metric.
+1. Sort `nums` in ascending order.
+2. For `i = 0` to `n - 1`: skip if `i > 0 && nums[i] == nums[i-1]`.
+3.   For `j = i + 1` to `n - 1`: skip if `j > i + 1 && nums[j] == nums[j-1]`.
+4.     Set `k = j + 1`, `l = n - 1`.
+5.     While `k < l`: evaluate sum; if matched, record and advance past duplicates; else adjust `k` or `l`.
+6. Return unique quadruplets.
 
 ## Why This Works
 
-Because the width is maximized initially, pairing the shorter boundary with any interior line will strictly decrease the width without being able to exceed the shorter boundary's height. Thus, interior pairs involving the shorter boundary are mathematically dominated and can be discarded.
+Sorting groups duplicate values together and creates a monotonic sequence where shifting boundary pointers deterministically increases or decreases the sum. This transforms an O(n⁴) brute force into an optimal O(n³) scan.
 
 ## Complexity
 
 ### Time Complexity
 
-`O(n)` — Where n is the size of the array. The two boundary pointers advance inward at each step, evaluating each element at most once.
+`O(n^3)` — Sorting takes O(n \log n). Two nested loops fix the first two anchors in O(n^2), and two pointers traverse the remaining elements in O(n), yielding an overall cubic O(n^3) time bound.
 
 ### Space Complexity
 
-`O(1)` — Constant auxiliary space; only pointer variables (`left`, `right`) are maintained in-place.
+`O(1)` — Constant auxiliary space utilized in-place for pointer indexing (excluding sorting recursion stack).
 
 ## Edge Cases
 
-- **Minimum Input Length:** Array with exactly 2 elements.
-- **Uniform Heights:** All elements having the same magnitude.
-- **Strictly Monotonic:** Strictly ascending or descending values.
+- **Fewer Than 4 Elements:** Arrays with length < 4 return an empty list immediately.
+- **32-Bit Signed Integer Overflow:** Summing extreme values is safely handled using 64-bit integers (`long long`).
+- **Consecutive Duplicate Elements:** Skipped deterministically after sorting to prevent duplicate output sets.
 
 ## Solution
 
