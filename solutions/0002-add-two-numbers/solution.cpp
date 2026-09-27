@@ -20,3 +20,17 @@ public:
             int b = (l2 != NULL) ? l2->val : 0;
 
             int sum = a + b + carry;
+
+            carry = sum / 10;
+            int digit = sum % 10;
+
+            curr->next = new ListNode(digit);
+            curr = curr->next;
+
+            if (l1 != NULL) l1 = l1->next;
+            if (l2 != NULL) l2 = l2->next;
+        }
+
+        return dummy.next;
+    }
+};
