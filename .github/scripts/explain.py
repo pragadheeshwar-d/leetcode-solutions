@@ -5,7 +5,7 @@ GitHub Actions Cloud Explanation Generator
 Runs directly inside GitHub Actions whenever a solution is committed.
 Uses Google Gemini 3.8 Flash to write a crystal-clear, deep, mathematically
 rigorous explanation and writes README.md directly to the repository.
-Also automatically maintains the root README problem index table and badge!
+Also automatically maintains the root README & LEETCODE_STATUS problem index table and badge!
 """
 
 import os
@@ -112,18 +112,15 @@ def call_gemini(api_key: str, prompt: str) -> str:
                     continue
     raise RuntimeError("Failed to generate explanation across all Gemini models.")
 
-def update_root_readme(repo_root: Path) -> bool:
-    root_readme = repo_root / "README.md"
-    if not root_readme.exists():
+def update_status_file(target_file: Path, problem_folders: list) -> bool:
+    if not target_file.exists():
         return False
 
-    problem_folders = [
-        d for d in repo_root.iterdir()
-        if d.is_dir() and re.match(r"^\d{4}-", d.name)
-    ]
-    problem_folders.sort(key=lambda d: d.name)
-
     rows = []
+    easy_count = 0
+    med_count = 0
+    hard_count = 0
+
     for folder in problem_folders:
         parts = folder.name.split("-", 1)
         prob_num_str = parts[0]
@@ -147,8 +144,12 @@ def update_root_readme(repo_root: Path) -> bool:
         diff_badge = "🟢 Easy"
         if "medium" in raw_diff.lower():
             diff_badge = "🟡 Medium"
+            med_count += 1
         elif "hard" in raw_diff.lower():
             diff_badge = "🔴 Hard"
+            hard_count += 1
+        else:
+            easy_count += 1
 
         sol_file = next((f for f in folder.iterdir() if f.is_file() and f.name.startswith("solution.")), None)
         lang_name = "C++"
@@ -170,11 +171,17 @@ def update_root_readme(repo_root: Path) -> bool:
         row = f"| `{prob_num_str}` | [{prob_title}]({prob_url}) | `{diff_badge}` | {lang_name} | {sol_link} | {readme_link} | {disc_link} |"
         rows.append(row)
 
-    old_content = root_readme.read_text(encoding="utf-8", errors="replace")
+    old_content = target_file.read_text(encoding="utf-8", errors="replace")
     content = old_content
 
-    # Update badge
+    # Update badges
     content = re.sub(r"Problems%20Solved-\d+-brightgreen", f"Problems%20Solved-{len(problem_folders)}-brightgreen", content)
+    content = re.sub(r"Easy-\d+%2F\d+-success", f"Easy-{easy_count}%2F{len(problem_folders)}-success", content)
+    content = re.sub(r"Medium-\d+-", f"Medium-{med_count}-", content)
+    content = re.sub(r"Hard-\d+-", f"Hard-{hard_count}-", content)
+
+    # Update metric table: Total Problems Solved
+    content = re.sub(r"(\|\s*🎯\s*\*\*Total Problems Solved\*\*\s*\|\s*\*\*)\d+(\*\*)", f"\g<1>{len(problem_folders)}\g<2>", content)
 
     # Update table
     table_header = "| # | Problem Title | Difficulty | Language | Solution | Deep Explanation | LeetCode Discussion |\n|:---:|:---|:---:|:---:|:---:|:---:|:---:|"
@@ -192,10 +199,21 @@ def update_root_readme(repo_root: Path) -> bool:
                 content = content[:idx] + f"## 🏆 Problem Index\n\n{new_table}\n\n" + content[next_sep:]
 
     if content != old_content:
-        root_readme.write_text(content, encoding="utf-8")
-        print(f"[*] Updated root README.md with {len(rows)} indexed problem(s).")
+        target_file.write_text(content, encoding="utf-8")
+        print(f"[*] Updated {target_file.name} with {len(rows)} indexed problem(s).")
         return True
     return False
+
+def update_all_status_files(repo_root: Path) -> bool:
+    problem_folders = [
+        d for d in repo_root.iterdir()
+        if d.is_dir() and re.match(r"^\d{4}-", d.name)
+    ]
+    problem_folders.sort(key=lambda d: d.name)
+
+    c1 = update_status_file(repo_root / "README.md", problem_folders)
+    c2 = update_status_file(repo_root / "LEETCODE_STATUS.md", problem_folders)
+    return c1 or c2
 
 def main():
     api_key = os.environ.get("GEMINI_API_KEY")
@@ -274,11 +292,11 @@ def main():
         except Exception as e:
             print(f"    [ERROR] Failed to generate for {folder_name}: {e}")
 
-    # Always check if root README needs updating
-    readme_updated = update_root_readme(repo_root)
+    # Always check if status files need updating
+    status_updated = update_all_status_files(repo_root)
 
-    print(f"\n[*] Finished. Generated {changed_count} new explanation(s). Root README updated: {readme_updated}")
-    if changed_count > 0 or readme_updated:
+    print(f"\n[*] Finished. Generated {changed_count} new explanation(s). Status files updated: {status_updated}")
+    if changed_count > 0 or status_updated:
         with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f:
             f.write("has_changes=true\n")
     else:
