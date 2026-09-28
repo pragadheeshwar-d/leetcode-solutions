@@ -8,8 +8,10 @@
   "solution_hash": "21766e8cb97f02662ad20f7697268a0fcb901ffca6f116e06deca45a309e8318",
   "explanation_file": "README.md",
   "explanation_status": "ready",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-09-27T16:32:51.321Z",
-  "updated_at": "2026-09-28T04:04:27Z",
-  "validation_status": "passed"
+  "updated_at": "2026-09-28T04:20:44.747Z",
+  "validation_status": "passed",
+  "discussion_url": "https://leetcode.com/problems/valid-parentheses/solutions/8543995/20-valid-parentheses-technical-explanati-w1at",
+  "posted_at": "2026-09-28T04:20:44.740Z"
 }
