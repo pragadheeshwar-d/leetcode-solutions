@@ -46,6 +46,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add [0-9][0-9][0-9][0-9]-*/README.md [0-9][0-9][0-9][0-9]-*/metadata.json README.md
-          git commit -m "docs(readme): generate clear technical explanation via Gemini 3.8 Flash [skip ci]"
+          git add [0-9][0-9][0-9][0-9]-*/README.md [0-9][0-9][0-9][0-9]-*/metadata.json README.md LEETCODE_STATUS.md
+          git commit -m "docs: auto-generate technical explanation and update status trackers [skip ci]"
           git push origin main
