@@ -1,49 +1,48 @@
 # 14. Longest Common Prefix
 
 ## Problem
-
-Given the input constraints for Longest Common Prefix, compute the optimal result.
+Given an array of strings `strs`, find the longest common prefix string amongst all strings in the array. If there is no common prefix, return an empty string `""`.
 
 ## Approach
-
-The solution performs vertical scanning across the string array by comparing characters column by column. It iterates through each character index of the first string, verifying that every other string matches at that same position. On the first mismatch or when reaching the end of any string, it returns the common prefix accumulated so far.
+The submitted code uses a **vertical scanning** approach. It selects the first string, `strs[0]`, as the baseline reference and iterates through its characters column by column (index by index). For every character position `i` in `strs[0]`, it checks all subsequent strings `strs[j]` to confirm that index `i` is within bounds and contains the identical character. At the first character mismatch or string termination, the common prefix found up to that point is extracted and returned.
 
 ## How the Solution Works
-
-1. **Column Iteration:** Iterate character index `i` of `strs[0]`.
-2. **Cross-Word Check:** For each string `strs[j]` from `j = 1` to `strs.size() - 1`:
-   - If `i >= strs[j].size()` or `strs[j][i] != strs[0][i]`: return `strs[0].substr(0, i)`.
-3. **Complete Match:** If all columns match, return `strs[0]`.
+1. The outer loop runs with index `i` ranging from `0` to `strs[0].size() - 1`.
+2. For each index `i`, it caches the reference character `char c = strs[0][i]`.
+3. The inner loop iterates with index `j` from `1` to `strs.size() - 1` across the remaining strings in the vector.
+4. Inside the inner loop, the condition `if (i >= strs[j].size() || strs[j][i] != c)` evaluates whether:
+   - String `strs[j]` is shorter than the current index `i` (`i >= strs[j].size()`).
+   - The character in `strs[j]` at index `i` differs from `c` (`strs[j][i] != c`).
+5. If either condition is true, the common prefix ends at index `i - 1`. The method returns `strs[0].substr(0, i)`, which extracts the substring from index `0` of length `i`.
+6. If the outer loop finishes completely without triggering a return, every character of `strs[0]` was successfully validated across all strings. The function returns `strs[0]`.
 
 ## Algorithm
-
-1. If `strs` is empty, return empty string.
-2. For column index `i = 0` to `strs[0].length() - 1`:
-3.   Let `c = strs[0][i]`.
-4.   For string index `j = 1` to `strs.length() - 1`:
-5.     If `i >= strs[j].length()` or `strs[j][i] != c`: return `strs[0].substr(0, i)`.
-6. Return `strs[0]`.
+1. Loop index `i` from `0` up to `strs[0].size() - 1`.
+2. Set `c = strs[0][i]`.
+3. Loop index `j` from `1` up to `strs.size() - 1`:
+   - If `i >= strs[j].size()` or `strs[j][i] != c`:
+     - Return `strs[0].substr(0, i)`.
+4. If the loop completes, return `strs[0]`.
 
 ## Why This Works
-
-Vertical scanning inspects characters column by column across all words simultaneously, allowing instant early termination the very moment a discrepancy is detected rather than scanning unnecessary string tails.
+A common prefix must be a prefix of every string in `strs`, including `strs[0]`. By checking each character position `i` across all strings simultaneously, the algorithm ensures that all strings match up to index `i - 1`. The moment any string either runs out of characters or contains a character that does not match `strs[0][i]`, the longest valid prefix cannot extend to index `i` or beyond. Hence, the prefix of length `i` (`strs[0].substr(0, i)`) is strictly the longest common prefix. If all characters of `strs[0]` are matched across all strings, then `strs[0]` itself is the common prefix.
 
 ## Complexity
 
 ### Time Complexity
-
-`O(S)` — Where S is the total number of characters across all strings. In the worst case, all n strings of length m are identical, executing n × m comparisons.
+$O(S)$ where $S$ is the sum of all characters across all strings in `strs`. 
+In the worst case (where all strings are identical), the algorithm performs character comparisons for every character in every string: up to $M \times N$ operations, where $N$ is the number of strings (`strs.size()`) and $M$ is the length of `strs[0]`. In the best case, it terminates on the first comparison $O(1)$ if the first character of the second string does not match `strs[0][0]`. The final substring extraction takes $O(L)$ time, where $L \le M$ is the length of the prefix.
 
 ### Space Complexity
-
-`O(1)` — Constant auxiliary space; only index counters and boundary registers are maintained in-place.
+$O(1)$ auxiliary space.
+The comparison logic operates in-place using only a couple of scalar index variables (`i`, `j`) and a single character variable (`c`). The returned string `strs[0].substr(0, i)` allocates memory for the output prefix, which takes $O(L)$ space where $L$ is the length of the longest common prefix.
 
 ## Edge Cases
-
-- **Empty Array:** Empty input returns `""` immediately.
-- **Single String:** Array with one string returns `strs[0]` directly.
-- **No Common Prefix:** Discrepancy at column 0 immediately terminates returning `""`.
-- **Unequal Word Lengths:** Guarded by `i >= strs[j].size()`, preventing out-of-bounds indexing.
+- **Single string in vector (`strs.size() == 1`)**: The inner loop condition `j < strs.size()` (i.e., `1 < 1`) is immediately false, the outer loop completes, and `strs[0]` is correctly returned.
+- **Empty first string (`strs[0] == ""`)**: The outer loop condition `i < strs[0].size()` (i.e., `0 < 0`) is false, the loop does not execute, and `strs[0]` (`""`) is returned.
+- **First string longer than subsequent strings**: Handled by `i >= strs[j].size()`, which prevents out-of-bounds access and returns the prefix matching the shorter string.
+- **No common prefix**: The condition `strs[j][0] != c` triggers on `i = 0`, returning `strs[0].substr(0, 0)`, which correctly evaluates to `""`.
+- **All strings identical**: The checks never fail, and `strs[0]` is returned at the end.
 
 ## Solution
 
