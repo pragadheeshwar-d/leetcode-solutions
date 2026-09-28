@@ -1,72 +1,69 @@
 # 20. Valid Parentheses
 
 ## Problem
-Given a string `s` containing only the characters `'('`, `')'`, `'{'`, `'}'`, `'['`, and `']'`, determine whether the input string is valid. A string is considered valid if:
-1. Open brackets are closed by the same type of brackets.
-2. Open brackets are closed in the correct order.
-3. Every closing bracket has a corresponding open bracket of the exact same type.
+Given a string `s` containing only the characters `'('`, `')'`, `'{'`, `'}'`, `'['`, and `']'`, determine if the input string is valid. A string is valid if every opening bracket is closed by the same type of bracket, brackets are closed in the correct order, and every closing bracket matches an opening bracket.
 
 ## Approach
-The submitted solution utilizes a Last-In, First-Out (LIFO) stack data structure (`std::stack<char> st`). 
-
-Because matching bracket pairs require that the most recently opened bracket must be the first one closed, the code iterates sequentially through each character `c` of string `s`:
-- When an opening bracket (`'('`, `'{'`, or `'['`) is encountered, it is pushed onto `st`.
-- When a closing bracket (`')'`, `'}'`, or `']'`) is encountered, the algorithm checks if the stack is empty (which indicates an unmatched closing bracket). If not empty, it pops the top element `t` and checks whether `t` matches the corresponding opening bracket for `c`. If it does not match, the string is invalid.
-- After processing all characters, the string is valid if and only if the stack is completely empty.
+The submitted solution uses a stack-based matching approach (`std::stack<char> st`). Because valid parentheses follow a Last-In, First-Out (LIFO) order of nesting, a stack is used to keep track of unclosed opening brackets:
+- As the string is scanned character by character, opening brackets (`'('`, `'{'`, `'['`) are pushed onto `st`.
+- When a closing bracket (`')'`, `'}'`, `']'`) is encountered:
+  1. The code verifies that the stack is not empty (which would mean a closing bracket appeared without any prior opening bracket).
+  2. The most recent opening bracket is inspected and removed using `st.top()` and `st.pop()`.
+  3. The closing bracket `c` is checked against the popped bracket `t` to verify that they are of matching types.
+- At the end of the iteration, the string is valid if and only if all opening brackets have been matched, which corresponds to `st.empty()`.
 
 ## How the Solution Works
-1. `stack<char> st;` is initialized to store unmatched opening bracket characters.
-2. A range-based `for` loop iterates through each character `c` in the string `s`:
-   - `if (c == '(' || c == '{' || c == '[')`: If `c` is an opening bracket, `st.push(c);` places it onto the stack.
-   - `else`: When `c` is a closing bracket:
-     - `if (st.empty()) return false;`: If the stack has no open brackets to match against, the string is invalid, immediately returning `false`.
-     - `char t = st.top();`: Reads the most recently pushed opening bracket.
-     - `st.pop();`: Removes that bracket from the stack.
-     - The code validates bracket compatibility using:
-       ```cpp
-       if ((c == ')' && t != '(') ||
-           (c == '}' && t != '{') ||
-           (c == ']' && t != '[')) {
-           return false;
-       }
-       ```
-       If the popped character `t` does not match the closing bracket `c`, `false` is returned immediately.
-3. `return st.empty();`: After scanning all characters in `s`, the function checks if any opening brackets remain unclosed. If `st` is empty, it returns `true`; otherwise, it returns `false`.
+1. An auxiliary stack of characters, `st`, is initialized to store opening brackets.
+2. A range-based for loop iterates through each character `c` in the string `s`:
+   - If `c == '(' || c == '{' || c == '['`:
+     - The bracket `c` is pushed onto `st` via `st.push(c)`.
+   - Else (meaning `c` is one of `')'`, `'}'`, or `']'`):
+     - `if (st.empty()) return false;`: If there are no open brackets in `st` to match with `c`, the string is immediately invalid.
+     - `char t = st.top(); st.pop();`: The most recently added open bracket is retrieved into `t` and removed from `st`.
+     - The condition checks if the pairs do not match:
+       - `(c == ')' && t != '(')`
+       - `(c == '}' && t != '{')`
+       - `(c == ']' && t != '[')`
+       If any of these conditions are true, `return false;`.
+3. After the loop completes, the function returns the evaluation of `st.empty()`. If unclosed opening brackets remain in `st`, it evaluates to `false`; otherwise, it evaluates to `true`.
 
 ## Algorithm
 1. Initialize an empty stack of characters `st`.
-2. For each character `c` in `s`:
+2. For each character `c` in the string `s`:
    1. If `c` is `'('`, `'{'`, or `'['`, push `c` onto `st`.
-   2. Otherwise (when `c` is a closing bracket):
+   2. Otherwise (`c` is a closing bracket):
       1. If `st` is empty, return `false`.
-      2. Retrieve the top character `t = st.top()` and pop it using `st.pop()`.
-      3. If `c` is `')'` and `t != '('`, return `false`.
-      4. If `c` is `'}'` and `t != '{'`, return `false`.
-      5. If `c` is `']'` and `t != '['`, return `false`.
-3. After the loop terminates, return `true` if `st.empty()` evaluates to `true`, otherwise return `false`.
+      2. Set `t` to the top element of `st`, then pop `st`.
+      3. If `c` does not match the corresponding type of `t` (i.e., `')'` with `'('`, `'}'` with `'{'`, or `']'` with `'['`), return `false`.
+3. Return `true` if `st` is empty, or `false` if `st` still contains unmatched opening brackets.
 
 ## Why This Works
-Bracket matching follows a strictly nested structure. Whenever an opening bracket appears, any subsequent brackets nested inside it must be completely matched and closed before this outer bracket can close. 
-
-A stack naturally enforces this LIFO constraint:
-- Every time a closing bracket appears, it must correspond directly to the most recently opened, unclosed bracket. That bracket is guaranteed to be at the top of the stack (`st.top()`).
-- If an incompatible bracket type is found at the top, or if the stack is empty when a closing bracket arrives, the nesting order is violated.
-- If all closing brackets match their corresponding open brackets, the stack will be emptied. If leftover opening brackets exist at the end, `st.empty()` correctly evaluates to `false`.
+Bracket balancing exhibits an optimal substructure governed by LIFO ordering: any closing bracket must match the most recently seen unmatched opening bracket. 
+- By pushing opening brackets to `st`, the top element `st.top()` always represents the innermost active scope.
+- When a closing bracket is processed, comparing it against `st.top()` guarantees that brackets close in the correct nested order.
+- Checking `st.empty()` when a closing bracket appears prevents underflow and detects unmatched closing brackets.
+- Checking `st.empty()` at the end ensures that strings with leftover opening brackets (e.g., `"("` or `"(()"`) evaluate to `false`.
 
 ## Complexity
 
 ### Time Complexity
-$O(n)$ — where $n$ is the length of the string `s`. The algorithm iterates through the string of length $n$ exactly once. In each iteration, stack operations (`push`, `top`, `pop`, and `empty`) take $O(1)$ constant time. Thus, the total time complexity is linear in terms of the input length $n$.
+$O(n)$ — Let $n$ be the length of the string `s`. The algorithm iterates through the string of length $n$ exactly once via `for (char c : s)`. In each iteration, the operations performed (stack `push`, `pop`, `top`, `empty`, and character equality checks) take $O(1)$ time. Thus, the total time complexity is $O(n)$.
 
 ### Space Complexity
-$O(n)$ — In the worst-case scenario (e.g., when the string consists entirely of opening brackets like `(((((`), all $n$ characters are pushed onto the stack `st`, requiring auxiliary memory proportional to $n$.
+$O(n)$ — In the worst-case scenario (e.g., when the string consists entirely of opening brackets like `"((((("`), all $n$ characters are pushed onto the stack `st`. Therefore, the auxiliary memory used by `st` is at most $n$ characters, resulting in $O(n)$ auxiliary space complexity.
 
 ## Edge Cases
-- **Single Character String (e.g., `"("` or `")"`):** If it is an opening bracket `"("`, it is pushed to `st`, loop finishes, and `st.empty()` returns `false`. If it is a closing bracket `")"`, `st.empty()` is true on the first iteration and returns `false`.
-- **Closing Bracket First (e.g., `"]("`):** The first character is `']'`. `st.empty()` triggers an immediate return of `false`.
-- **Mismatched Bracket Types (e.g., `"(]"`):** `'('` is pushed, then on `']'`, `t` is `'('`. The condition `(c == ']' && t != '[')` evaluates to true, correctly returning `false`.
-- **Properly Nested Brackets (e.g., `"([])"`):** `'('` and `'['` are pushed. When `']'` is read, it matches `t = '['` and pops it. Next, `')'` matches `t = '('` and pops it. The stack is empty at the end, correctly returning `true`.
-- **Incomplete Pairs / Unclosed Brackets (e.g., `"()("`):** The final `'('` remains on the stack. `st.empty()` returns `false`.
+- **Single character string (e.g., `"("` or `")"`):** 
+  - If `s = "("`, the loop finishes and returns `st.empty()`, which evaluates to `false`.
+  - If `s = ")"`, `st.empty()` is true on the first iteration, immediately returning `false`.
+- **Closing bracket before any opening bracket (e.g., `")("`):**
+  - On the first character `')'`, `st.empty()` evaluates to `true`, causing an early exit returning `false`.
+- **Mismatched types (e.g., `"(]"`):**
+  - `'('` is pushed. When `']'` is encountered, `t` is `'('`. The condition `(c == ']' && t != '[')` evaluates to `true`, returning `false`.
+- **Interleaved/misordered brackets (e.g., `"([)]"`):**
+  - `'('` and `'['` are pushed. When `')'` is encountered, `t` is `'['`. Since `t != '(' `, it returns `false`.
+- **Unclosed brackets at the end (e.g., `"(()"`):**
+  - All matching steps succeed, but one `'('` remains in `st`. The final check `st.empty()` correctly evaluates to `false`.
 
 ## Solution
 
