@@ -1,0 +1,51 @@
+name: Generate AI Explanation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '[0-9][0-9][0-9][0-9]-*/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  explain:
+    name: Generate Clear Technical Explanations
+    if: "!contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.head_commit.message, 'docs(readme):')"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install httpx
+
+      - name: Run AI Explanation Generator
+        id: explainer
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python .github/scripts/explain.py
+
+      - name: Commit & Push Generated Explanations
+        if: steps.explainer.outputs.has_changes == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add [0-9][0-9][0-9][0-9]-*/README.md [0-9][0-9][0-9][0-9]-*/metadata.json
+          git commit -m "docs(readme): generate clear technical explanation via Gemini 3.8 Flash [skip ci]"
+          git push origin main
