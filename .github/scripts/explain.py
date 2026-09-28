@@ -5,6 +5,7 @@ GitHub Actions Cloud Explanation Generator
 Runs directly inside GitHub Actions whenever a solution is committed.
 Uses Google Gemini 3.8 Flash to write a crystal-clear, deep, mathematically
 rigorous explanation and writes README.md directly to the repository.
+Also automatically maintains the root README problem index table and badge!
 """
 
 import os
@@ -50,7 +51,7 @@ CRITICAL INSTRUCTIONS:
 
 ## Complexity
 ### Time Complexity
-`[e.g. O(n) or O(n³)]` — [Detailed arithmetic justification]
+`[e.g. O(n) or O(n²)]` — [Detailed arithmetic justification]
 
 ### Space Complexity
 `[e.g. O(1) or O(n)]` — [Detailed memory justification]
@@ -111,6 +112,91 @@ def call_gemini(api_key: str, prompt: str) -> str:
                     continue
     raise RuntimeError("Failed to generate explanation across all Gemini models.")
 
+def update_root_readme(repo_root: Path) -> bool:
+    root_readme = repo_root / "README.md"
+    if not root_readme.exists():
+        return False
+
+    problem_folders = [
+        d for d in repo_root.iterdir()
+        if d.is_dir() and re.match(r"^\d{4}-", d.name)
+    ]
+    problem_folders.sort(key=lambda d: d.name)
+
+    rows = []
+    for folder in problem_folders:
+        parts = folder.name.split("-", 1)
+        prob_num_str = parts[0]
+        slug = parts[1] if len(parts) > 1 else ""
+        prob_title = slug.replace("-", " ").title()
+
+        meta_file = folder / "metadata.json"
+        meta = {}
+        if meta_file.exists():
+            try:
+                meta = json.loads(meta_file.read_text(encoding="utf-8", errors="replace"))
+            except Exception:
+                pass
+
+        if meta.get("title"):
+            prob_title = meta["title"]
+        if meta.get("slug"):
+            slug = meta["slug"]
+
+        raw_diff = meta.get("difficulty", "Easy")
+        diff_badge = "🟢 Easy"
+        if "medium" in raw_diff.lower():
+            diff_badge = "🟡 Medium"
+        elif "hard" in raw_diff.lower():
+            diff_badge = "🔴 Hard"
+
+        sol_file = next((f for f in folder.iterdir() if f.is_file() and f.name.startswith("solution.")), None)
+        lang_name = "C++"
+        sol_link = f"[{sol_file.name}]({folder.name}/{sol_file.name})" if sol_file else "-"
+        if sol_file:
+            ext = sol_file.suffix.lstrip(".").lower()
+            if ext in ("py", "python"):
+                lang_name = "Python"
+            elif ext == "java":
+                lang_name = "Java"
+            elif ext in ("js", "ts"):
+                lang_name = "JavaScript"
+
+        readme_link = f"[📖 Read Breakdown]({folder.name}/README.md)" if (folder / "README.md").exists() else "-"
+        disc_url = meta.get("discussion_url")
+        disc_link = f"[💬 Discussion Post]({disc_url})" if disc_url else "-"
+        prob_url = f"https://leetcode.com/problems/{slug}/" if slug else "https://leetcode.com/"
+
+        row = f"| `{prob_num_str}` | [{prob_title}]({prob_url}) | `{diff_badge}` | {lang_name} | {sol_link} | {readme_link} | {disc_link} |"
+        rows.append(row)
+
+    old_content = root_readme.read_text(encoding="utf-8", errors="replace")
+    content = old_content
+
+    # Update badge
+    content = re.sub(r"Problems%20Solved-\d+-brightgreen", f"Problems%20Solved-{len(problem_folders)}-brightgreen", content)
+
+    # Update table
+    table_header = "| # | Problem Title | Difficulty | Language | Solution | Deep Explanation | LeetCode Discussion |\n|:---:|:---|:---:|:---:|:---:|:---:|:---:|"
+    table_body = "\n".join(rows)
+    new_table = f"{table_header}\n{table_body}"
+
+    pattern = re.compile(r"(## 🏆 Problem Index\s*\n\n)(?:\|.*?\|\n)+", re.MULTILINE)
+    if pattern.search(content):
+        content = pattern.sub(f"\\1{new_table}\n", content)
+    else:
+        idx = content.find("## 🏆 Problem Index")
+        if idx != -1:
+            next_sep = content.find("\n---", idx)
+            if next_sep != -1:
+                content = content[:idx] + f"## 🏆 Problem Index\n\n{new_table}\n\n" + content[next_sep:]
+
+    if content != old_content:
+        root_readme.write_text(content, encoding="utf-8")
+        print(f"[*] Updated root README.md with {len(rows)} indexed problem(s).")
+        return True
+    return False
+
 def main():
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
@@ -120,7 +206,6 @@ def main():
     repo_root = Path(__file__).resolve().parent.parent.parent
     print(f"[*] Scanning repository root: {repo_root}")
 
-    # Find problem folders matching e.g. '0020-valid-parentheses'
     problem_folders = [
         d for d in repo_root.iterdir()
         if d.is_dir() and re.match(r"^\d{4}-", d.name)
@@ -132,17 +217,14 @@ def main():
 
     for folder in problem_folders:
         folder_name = folder.name
-        # Find solution file
         sol_file = next((f for f in folder.iterdir() if f.is_file() and f.name.startswith("solution.")), None)
         if not sol_file:
             continue
 
         readme_file = folder / "README.md"
-        # Check if already generated
         if readme_file.exists():
             content = readme_file.read_text(encoding="utf-8", errors="replace")
             if len(content) > 1200 and "## Why This Works" in content:
-                # Up to date
                 continue
 
         print(f"\n--> Generating AI Explanation for {folder_name}...")
@@ -150,12 +232,10 @@ def main():
         prob_desc_file = folder / "problem.md"
         prob_desc = prob_desc_file.read_text(encoding="utf-8", errors="replace").strip() if prob_desc_file.exists() else ""
 
-        # Parse number and title
         parts = folder_name.split("-", 1)
         prob_num = int(parts[0])
         prob_title = parts[1].replace("-", " ").title()
 
-        # Check metadata.json
         meta_file = folder / "metadata.json"
         meta = {}
         if meta_file.exists():
@@ -185,7 +265,6 @@ def main():
             elapsed = time.time() - start_t
             print(f"    [DONE] Written README.md in {elapsed:.2f}s ({len(final_md)} chars).")
 
-            # Update metadata.json
             if meta_file.exists():
                 meta["explanation_status"] = "ready"
                 meta["updated_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
@@ -195,9 +274,11 @@ def main():
         except Exception as e:
             print(f"    [ERROR] Failed to generate for {folder_name}: {e}")
 
-    print(f"\n[*] Finished. Generated {changed_count} new explanation(s).")
-    if changed_count > 0:
-        # Signal to GitHub Actions that files changed
+    # Always check if root README needs updating
+    readme_updated = update_root_readme(repo_root)
+
+    print(f"\n[*] Finished. Generated {changed_count} new explanation(s). Root README updated: {readme_updated}")
+    if changed_count > 0 or readme_updated:
         with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f:
             f.write("has_changes=true\n")
     else:
