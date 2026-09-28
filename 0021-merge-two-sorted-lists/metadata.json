@@ -8,7 +8,9 @@
   "solution_hash": "3be897686105100ad3f29dc36221d96dede3adc33c2f83192dc08f263c5cf594",
   "explanation_file": "README.md",
   "explanation_status": "ready",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-09-28T04:18:48.991Z",
-  "updated_at": "2026-09-28T04:19:49Z"
+  "updated_at": "2026-09-28T04:22:40.979Z",
+  "discussion_url": "https://leetcode.com/problems/merge-two-sorted-lists/solutions/8543999/21-merge-two-sorted-lists-technical-expl-h66q",
+  "posted_at": "2026-09-28T04:22:39.907Z"
 }
