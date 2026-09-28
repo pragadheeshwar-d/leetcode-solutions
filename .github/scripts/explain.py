@@ -181,7 +181,7 @@ def update_status_file(target_file: Path, problem_folders: list) -> bool:
     content = re.sub(r"Hard-\d+-", f"Hard-{hard_count}-", content)
 
     # Update metric table: Total Problems Solved
-    content = re.sub(r"(\|\s*🎯\s*\*\*Total Problems Solved\*\*\s*\|\s*\*\*)\d+(\*\*)", f"\g<1>{len(problem_folders)}\g<2>", content)
+    content = re.sub(r"(\|\s*🎯\s*\*\*Total Problems Solved\*\*\s*\|\s*\*\*)\d+(\*\*)", fr"\g<1>{len(problem_folders)}\g<2>", content)
 
     # Update table
     table_header = "| # | Problem Title | Difficulty | Language | Solution | Deep Explanation | LeetCode Discussion |\n|:---:|:---|:---:|:---:|:---:|:---:|:---:|"
