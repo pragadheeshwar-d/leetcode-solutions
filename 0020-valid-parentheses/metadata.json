@@ -8,7 +8,9 @@
   "solution_hash": "21766e8cb97f02662ad20f7697268a0fcb901ffca6f116e06deca45a309e8318",
   "explanation_file": "README.md",
   "explanation_status": "pending",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-10-01T16:32:09.258Z",
-  "updated_at": "2026-10-01T16:32:09.259Z"
+  "updated_at": "2026-10-01T16:33:11.769Z",
+  "discussion_url": "https://leetcode.com/problems/valid-parentheses/solutions/8550710/20-valid-parentheses-technical-explanati-m02o",
+  "posted_at": "2026-10-01T16:33:11.763Z"
 }
