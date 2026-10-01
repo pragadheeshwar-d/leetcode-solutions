@@ -60,7 +60,7 @@
 | `0020` | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | `🟢 Easy` | C++ | [solution.cpp](0020-valid-parentheses/solution.cpp) | [📖 Read Breakdown](0020-valid-parentheses/README.md) | [💬 Discussion Post](https://leetcode.com/problems/valid-parentheses/solutions/8550710/20-valid-parentheses-technical-explanati-m02o) |
 | `0021` | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | `🟢 Easy` | C++ | [solution.cpp](0021-merge-two-sorted-lists/solution.cpp) | [📖 Read Breakdown](0021-merge-two-sorted-lists/README.md) | [💬 Discussion Post](https://leetcode.com/problems/merge-two-sorted-lists/solutions/8543999/21-merge-two-sorted-lists-technical-expl-h66q) |
 | `0026` | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | `🟢 Easy` | C++ | [solution.cpp](0026-remove-duplicates-from-sorted-array/solution.cpp) | [📖 Read Breakdown](0026-remove-duplicates-from-sorted-array/README.md) | [💬 Discussion Post](https://leetcode.com/problems/remove-duplicates-from-sorted-array/solutions/8547877/26-remove-duplicates-from-sorted-array-t-1g1h) |
-| `0027` | [Remove Element](https://leetcode.com/problems/remove-element/) | `🟢 Easy` | C++ | [solution.cpp](0027-remove-element/solution.cpp) | [📖 Read Breakdown](0027-remove-element/README.md) | - |
+| `0027` | [Remove Element](https://leetcode.com/problems/remove-element/) | `🟢 Easy` | C++ | [solution.cpp](0027-remove-element/solution.cpp) | [📖 Read Breakdown](0027-remove-element/README.md) | [💬 Discussion Post](https://leetcode.com/problems/remove-element/solutions/8550713/27-remove-element-technical-explanation-rnn1q) |
 
 ---
 
