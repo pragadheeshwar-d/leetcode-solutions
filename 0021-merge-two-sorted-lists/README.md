@@ -1,65 +1,48 @@
 # 21. Merge Two Sorted Lists
 
 ## Problem
-Given the heads of two sorted singly linked lists, `list1` and `list2`, merge them into a single sorted linked list. The merge must be done in-place by splicing together the nodes of the original lists. Return the head of the merged linked list.
+Given the heads of two sorted singly-linked lists, `list1` and `list2`, merge them into a single sorted linked list by splicing the existing nodes together, and return the head of the merged list.
 
 ## Approach
-The submitted solution implements an elegant, iterative, in-place merge algorithm using a **dummy (sentinel) node** and two pointers. 
+The submitted solution uses an iterative two-pointer technique utilizing a stack-allocated sentinel (dummy) node. 
 
-Instead of dynamically allocating a dummy node on the heap (which would require manual deallocation to prevent memory leaks), the solution instantiates a local dummy node `d` on the stack. A traversal pointer `c` is initialized to point to `d`. The algorithm then compares the current nodes of both lists, links the node with the smaller value to the merged list, and advances the corresponding pointer. Once one of the lists is exhausted, the remaining nodes of the other list are appended directly to the end of the merged list in $O(1)$ time.
+Instead of dynamically allocating a dummy node or handling the head of the new list as a special case, the function declares a local `ListNode d(0)`. A tracking pointer `c` points to the tail of the newly formed merged list (initially pointing to `&d`). Pointers `a` and `b` iterate through their respective linked lists, linking the node with the smaller or equal value to `c->next` until one list is exhausted. The remaining non-empty list is then linked to the end.
 
 ## How the Solution Works
-1. **Initialization**: 
-   - A stack-allocated sentinel node `ListNode d(0)` is declared. This simplifies the edge cases associated with initializing the head of the merged list.
-   - A pointer `ListNode* c` is initialized to the address of `d` (`&d`). `c` acts as the tail of the newly merged list.
-2. **Iterative Comparison**:
-   - The `while (a && b)` loop runs as long as both pointers `a` (representing the current node of the first list) and `b` (representing the current node of the second list) are non-null.
-   - Inside the loop, `a->val` and `b->val` are compared:
-     - If `a->val <= b->val`, the tail pointer's next pointer `c->next` is linked to `a`, and `a` is advanced to `a->next`.
-     - Otherwise, `c->next` is linked to `b`, and `b` is advanced to `b->next`.
-   - In both cases, the tail pointer `c` is advanced to its new tail, `c->next`.
-3. **Appending Remainder**:
-   - Once the loop terminates, at least one of the lists is fully exhausted.
-   - The expression `c->next = a ? a : b;` checks which list still has remaining elements and appends the remainder of that list directly to the merged list.
-4. **Return**:
-   - The function returns `d.next`, which points to the actual head of the merged sorted list (skipping the dummy node `d`).
+1. `ListNode d(0);`: Allocates a dummy node `d` on the stack with value `0` to serve as a fixed anchor for the merged list.
+2. `ListNode* c = &d;`: Initializes a pointer `c` to track the current tail of the merged list.
+3. `while (a && b)`: Iterates as long as both pointers `a` and `b` point to valid nodes:
+   - If `a->val <= b->val`, `c->next` is set to `a`, and `a` is advanced to `a->next`.
+   - Otherwise, `c->next` is set to `b`, and `b` is advanced to `b->next`.
+   - `c` is updated to `c->next` to point to the newly appended node.
+4. `c->next = a ? a : b;`: Once one list is exhausted, the loop terminates. The ternary operator checks if `a` is non-null; if so, `a` is appended to `c->next`. Otherwise, `b` (which is either a valid list or `nullptr`) is appended.
+5. `return d.next;`: Returns the node following the dummy sentinel, which is the head of the merged list.
 
 ## Algorithm
-1. Initialize a dummy `ListNode` named `d` with value `0`, and a pointer `c` pointing to `d`.
-2. While both `a` and `b` are not `nullptr`:
-   1. If `a->val <= b->val`, set `c->next` to `a` and advance `a` to `a->next`.
-   2. Otherwise, set `c->next` to `b` and advance `b` to `b->next`.
-   3. Advance the tracking pointer `c` to `c->next`.
-3. Once the loop terminates, check which pointer (`a` or `b`) is not null, and assign it to `c->next`.
+1. Initialize a sentinel node `d` on the stack and set a tail pointer `c = &d`.
+2. While both `a` and `b` are not null:
+   1. If `a->val <= b->val`, set `c->next = a` and update `a = a->next`.
+   2. Otherwise, set `c->next = b` and update `b = b->next`.
+   3. Advance the tail pointer: `c = c->next`.
+3. Connect the remaining nodes by assigning `c->next = a ? a : b`.
 4. Return `d.next`.
 
 ## Why This Works
-The algorithm relies on the loop invariant that at the start of each iteration of the `while` loop, the merged list ending at `c` is sorted, and all nodes in the merged list are strictly less than or equal to the nodes remaining in the lists pointed to by `a` and `b`. 
-
-Since both input lists are already sorted in non-decreasing order:
-- The minimum element of the remaining unmerged nodes must reside at either the head of list `a` or the head of list `b`.
-- By choosing $\min(\text{head}(a), \text{head}(b))$ and appending it to `c->next`, the non-decreasing order of the merged list is preserved.
-- When one list is completely traversed, all elements in the remaining non-empty list are guaranteed to be greater than or equal to all elements currently in the merged list. Thus, we can safely append the entire remaining sublist in $O(1)$ time.
+Because both input lists are already sorted in non-decreasing order, comparing the current front nodes of each list (`a->val` and `b->val`) guarantees that the smaller of the two is the globally smallest element remaining across both lists. Splicing this node onto the tail `c` maintains the non-decreasing order of the merged list. When one list is exhausted, all remaining elements in the other list are greater than or equal to all elements merged so far and are already sorted among themselves, making a single pointer reassignment sufficient to complete the merge.
 
 ## Complexity
 
 ### Time Complexity
-`O(N + M)` — where $N$ and $M$ are the number of nodes in lists `a` and `b`, respectively. 
-- In each iteration of the `while` loop, exactly one node from either list `a` or list `b` is processed and the corresponding pointer is advanced.
-- The maximum number of loop iterations is $\min(N, M)$.
-- After the loop, the remaining elements of the non-empty list (which can be at most $|N - M|$ elements) are linked in $O(1)$ constant time.
-- Therefore, the total time complexity scales linearly with the total number of nodes, $O(N + M)$.
+$O(n + m)$ — where $n$ is the number of nodes in list `a` and $m$ is the number of nodes in list `b`. Each iteration of the `while` loop advances either `a` or `b` by one node. The loop executes at most $\min(n, m)$ times, and the remaining nodes ($|n - m|$) are attached in $O(1)$ time. Thus, the total number of operations is proportional to the total number of nodes, $n + m$.
 
 ### Space Complexity
-`O(1)` — The algorithm merges the lists in-place by updating the pointer offsets (`next` pointers) of the existing nodes. 
-- No new dynamic nodes are allocated on the heap.
-- The dummy node `d` is allocated on the stack frame of the function call, using $O(1)$ auxiliary stack space.
-- The pointer `c` uses $O(1)$ memory.
+$O(1)$ — The algorithm performs an in-place merge by rewiring the `next` pointers of the existing nodes. The auxiliary space consists only of the stack-allocated node `d` and the pointer `c`, requiring constant extra memory.
 
 ## Edge Cases
-- **Both lists are empty (`a == nullptr` and `b == nullptr`)**: The `while` loop does not execute. `c->next = a ? a : b` evaluates to `c->next = nullptr`. `d.next` returns `nullptr`. Correct.
-- **One list is empty (e.g., `a == nullptr` and `b != nullptr`)**: The `while` loop is bypassed. `c->next` is assigned to `b`. `d.next` correctly returns the head of `b`.
-- **Lists with identical elements**: The stable comparison `a->val <= b->val` ensures nodes from list `a` are appended before nodes from list `b`, maintaining stability and correctness.
+- **Both lists are empty (`a == nullptr`, `b == nullptr`):** The `while` loop does not execute. `c->next` is assigned `b` (which is `nullptr`), and `d.next` returns `nullptr`.
+- **One list is empty (`a == nullptr` or `b == nullptr`):** The `while` loop does not execute. `c->next` attaches the non-empty list directly via `a ? a : b`, correctly returning the non-empty list.
+- **Lists of different lengths:** The loop stops when the shorter list is exhausted, and the remaining sublist of the longer list is attached in a single step without traversing it.
+- **Lists with identical values:** Handled by the `<=` condition, which arbitrarily favors list `a` to preserve stability.
 
 ## Solution
 
