@@ -2,9 +2,9 @@
 
 <div align="center">
 
-[![Problems Solved](https://img.shields.io/badge/Problems%20Solved-7-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)
-[![Easy](https://img.shields.io/badge/Easy-7%2F7-success?style=for-the-badge)](https://leetcode.com/)
-[![Medium](https://img.shields.io/badge/Medium-0-inactive?style=for-the-badge)](https://leetcode.com/)
+[![Problems Solved](https://img.shields.io/badge/Problems%20Solved-8-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)
+[![Easy](https://img.shields.io/badge/Easy-7%2F8-success?style=for-the-badge)](https://leetcode.com/)
+[![Medium](https://img.shields.io/badge/Medium-1-inactive?style=for-the-badge)](https://leetcode.com/)
 [![Hard](https://img.shields.io/badge/Hard-0-inactive?style=for-the-badge)](https://leetcode.com/)
 [![Language](https://img.shields.io/badge/Language-C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://en.cppreference.com/)
 [![System Architecture](https://img.shields.io/badge/System-How%20It%20Works%20%E2%9E%94-blueviolet?style=for-the-badge&logo=githubactions&logoColor=white)](HOW_IT_WORKS.md)
@@ -32,7 +32,7 @@
 
 | Metric | Current Status | Details |
 |:---|:---:|:---|
-| 🎯 **Total Problems Solved** | **7** | Implemented in C++ with optimal time/space complexity |
+| 🎯 **Total Problems Solved** | **8** | Implemented in C++ with optimal time/space complexity |
 | 🟢 **Easy** | **5 / 5** | `Palindrome Number`, `Roman to Integer`, `Longest Common Prefix`, `Valid Parentheses`, `Merge Two Sorted Lists` |
 | 🟡 **Medium** | **0** | Next milestone! |
 | 🔴 **Hard** | **0** | Upcoming challenge |
@@ -59,6 +59,7 @@
 | `0014` | [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/) | `🟢 Easy` | C++ | [solution.cpp](0014-longest-common-prefix/solution.cpp) | [📖 Read Breakdown](0014-longest-common-prefix/README.md) | [💬 Discussion Post](https://leetcode.com/problems/longest-common-prefix/solutions/8543306/14-longest-common-prefix-technical-expla-d88f) |
 | `0020` | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | `🟢 Easy` | C++ | [solution.cpp](0020-valid-parentheses/solution.cpp) | [📖 Read Breakdown](0020-valid-parentheses/README.md) | [💬 Discussion Post](https://leetcode.com/problems/valid-parentheses/solutions/8550710/20-valid-parentheses-technical-explanati-m02o) |
 | `0021` | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | `🟢 Easy` | C++ | [solution.cpp](0021-merge-two-sorted-lists/solution.cpp) | [📖 Read Breakdown](0021-merge-two-sorted-lists/README.md) | [💬 Discussion Post](https://leetcode.com/problems/merge-two-sorted-lists/solutions/8543999/21-merge-two-sorted-lists-technical-expl-h66q) |
+| `0022` | [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) | `🟡 Medium` | C++ | [solution.cpp](0022-generate-parentheses/solution.cpp) | [📖 Read Breakdown](0022-generate-parentheses/README.md) | - |
 | `0026` | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | `🟢 Easy` | C++ | [solution.cpp](0026-remove-duplicates-from-sorted-array/solution.cpp) | [📖 Read Breakdown](0026-remove-duplicates-from-sorted-array/README.md) | [💬 Discussion Post](https://leetcode.com/problems/remove-duplicates-from-sorted-array/solutions/8547877/26-remove-duplicates-from-sorted-array-t-1g1h) |
 | `0027` | [Remove Element](https://leetcode.com/problems/remove-element/) | `🟢 Easy` | C++ | [solution.cpp](0027-remove-element/solution.cpp) | [📖 Read Breakdown](0027-remove-element/README.md) | [💬 Discussion Post](https://leetcode.com/problems/remove-element/solutions/8550713/27-remove-element-technical-explanation-rnn1q) |
 
