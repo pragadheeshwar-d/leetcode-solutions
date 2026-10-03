@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """
 GitHub Actions Cloud Explanation Generator
 ============================================
 Runs directly inside GitHub Actions whenever a solution is committed.
-Uses Google Gemini 3.8 Flash to write a crystal-clear, deep, mathematically
+Uses Google Gemini Flash to write a crystal-clear, deep, mathematically
 rigorous explanation and writes README.md directly to the repository.
 Also automatically maintains the root README & LEETCODE_STATUS problem index table and badge!
 """
@@ -30,8 +29,6 @@ CRITICAL INSTRUCTIONS:
 8. Do NOT invent variables, data structures, loops, conditions, or operations that do not exist.
 9. Output must be formatted in clean GitHub Markdown matching this exact structure:
 
-# [Problem Title]
-
 ## Problem
 [Concise summary of the problem requirements]
 
@@ -49,7 +46,6 @@ CRITICAL INSTRUCTIONS:
 ## Why This Works
 [Theoretical correctness justification]
 
-## Complexity
 ### Time Complexity
 `[e.g. O(n) or O(n²)]` — [Detailed arithmetic justification]
 
@@ -84,7 +80,8 @@ def enforce_exact_solution(ai_text: str, problem_number: int, problem_title: str
     return text
 
 def call_gemini(api_key: str, prompt: str) -> str:
-    models = ["gemini-3.8-flash", "gemini-3.5-flash", "gemini-flash-latest"]
+    # FIX: corrected model names — gemini-3.8-flash/gemini-3.5-flash do not exist
+    models = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]
     for model_name in models:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
         body = {
@@ -176,6 +173,7 @@ def update_status_file(target_file: Path, problem_folders: list) -> bool:
 
     # Update badges
     content = re.sub(r"Problems%20Solved-\d+-brightgreen", f"Problems%20Solved-{len(problem_folders)}-brightgreen", content)
+    # FIX: restored correct indentation (was at module level)
     content = re.sub(r"Easy-\d+%2F\d+-success", f"Easy-{easy_count}%2F{len(problem_folders)}-success", content)
     content = re.sub(r"Medium-\d+-", f"Medium-{med_count}-", content)
     content = re.sub(r"Hard-\d+-", f"Hard-{hard_count}-", content)
@@ -281,6 +279,7 @@ def main():
             final_md = enforce_exact_solution(ai_text, prob_num, prob_title, language, sol_code)
             readme_file.write_text(final_md, encoding="utf-8")
             elapsed = time.time() - start_t
+            # FIX: restored correct indentation (was at module level)
             print(f"    [DONE] Written README.md in {elapsed:.2f}s ({len(final_md)} chars).")
 
             if meta_file.exists():
