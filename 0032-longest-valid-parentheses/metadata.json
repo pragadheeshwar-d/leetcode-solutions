@@ -1,0 +1,14 @@
+{
+  "problem_id": 32,
+  "title": "Longest Valid Parentheses",
+  "slug": "longest-valid-parentheses",
+  "language": "cpp",
+  "difficulty": "Hard",
+  "solution_file": "solution.cpp",
+  "solution_hash": "a1c41eaacaf62a91531f0c15e513b3e8c0e816c1fb7c0f9a62f3a468921a65ed",
+  "explanation_file": "README.md",
+  "explanation_status": "pending",
+  "post_status": "pending",
+  "created_at": "2026-10-03T12:16:58.077Z",
+  "updated_at": "2026-10-03T12:16:58.078Z"
+}
