@@ -1,0 +1,14 @@
+{
+  "problem_id": 678,
+  "title": "Valid Parenthesis String",
+  "slug": "valid-parenthesis-string",
+  "language": "cpp",
+  "difficulty": "Medium",
+  "solution_file": "solution.cpp",
+  "solution_hash": "06dc601be3a106e7a4f0b392689f75975a8eda98c82b46ca6c79c23a3b7537ee",
+  "explanation_file": "README.md",
+  "explanation_status": "pending",
+  "post_status": "pending",
+  "created_at": "2026-10-04T02:26:11.363Z",
+  "updated_at": "2026-10-04T02:26:11.363Z"
+}
