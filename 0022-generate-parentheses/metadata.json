@@ -8,7 +8,9 @@
   "solution_hash": "0200918ea88f9ac4d874057140e27a4d8f3d1519b36b98b43185b401252c8b74",
   "explanation_file": "README.md",
   "explanation_status": "ready",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-10-02T07:33:35.259Z",
-  "updated_at": "2026-10-02T07:34:49Z"
+  "updated_at": "2026-10-04T02:26:45.301Z",
+  "discussion_url": "https://leetcode.com/problems/generate-parentheses/solutions/8554440/22-generate-parentheses-technical-explan-44ur",
+  "posted_at": "2026-10-04T02:26:45.296Z"
 }
