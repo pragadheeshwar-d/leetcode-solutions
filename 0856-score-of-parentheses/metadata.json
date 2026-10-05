@@ -8,8 +8,10 @@
   "solution_hash": "2efff63e5bf21ee339f76303631de6d93ef284c5f4fd782a315812d80966cae4",
   "explanation_file": "README.md",
   "explanation_status": "ready",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-10-05T17:19:25.577Z",
-  "updated_at": "2026-10-05T17:58:12.026Z",
-  "validation_status": "passed"
+  "updated_at": "2026-10-05T18:00:57.025Z",
+  "validation_status": "passed",
+  "discussion_url": "https://leetcode.com/problems/score-of-parentheses/solutions/8557683/856-score-of-parentheses-technical-expla-yjt9",
+  "posted_at": "2026-10-05T18:00:57.020Z"
 }
