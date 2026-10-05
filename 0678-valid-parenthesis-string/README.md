@@ -1,28 +1,28 @@
 # 678. Valid Parenthesis String
 
 ## Approach
-1. **Stack Initialization:** Maintain a LIFO stack (`st`) to store encountered opening brackets.
-2. **Character Inspection:** Iterate over each character `c` in the string `s`.
-3. **Push Opening Brackets:** If `c` is an opening bracket (`'('`, `'{'`, or `'['`), push it onto the stack.
-4. **Validate Closing Brackets:** If `c` is a closing bracket, verify that the stack is non-empty and that the top element matches the corresponding opening bracket type (`st.top()`, `st.pop()`). If empty or mismatched, return `false`.
-5. **Final Balance Check:** After scanning all characters, return `st.empty()` to verify no unclosed opening brackets remain.
+Greedy Range Tracking / Variable Bounds Approach
 
 ## How It Works
-The algorithm enforces bracket nesting rules using a Last-In, First-Out (LIFO) stack:
-- **LIFO Invariant:** The most recently opened bracket must be the first one closed. A stack naturally preserves this temporal ordering.
-- **Push Phase:** Every opening character (`'('`, `'{'`, `'['`) is pushed onto the stack to await its closing partner.
-- **Pop & Match Phase:** When a closing character (`')'`, `'}'`, `']'`) arrives, the algorithm inspects the top element (`st.top()`). If the stack is empty (closing bracket without an opener) or the top element does not match the expected type, the expression violates syntactic nesting and returns `false` immediately.
-- **Final Validation:** Returning `st.empty()` ensures no opening brackets were left unclosed at the end of the string.
+The algorithm tracks the range of possible counts of open parentheses that could be left unmatched at any point in the string. It maintains two integer variables: `low` (the minimum possible number of open parentheses) and `high` (the maximum possible number of open parentheses).
+
+1. It iterates through each character `c` in the string `s`:
+   - If `c == '('`: Increments both `low` and `high` by 1, as an open bracket increases the open bracket count.
+   - If `c == ')'`: Decrements both `low` and `high` by 1, as a closed bracket matches an open bracket.
+   - If `c == '*'`: Decrements `low` by 1 (assuming `*` acts as `)`) and increments `high` by 1 (assuming `*` acts as `(`).
+2. If `high < 0` at any point, it means even under the most optimistic scenario (treating all `*` as `(`), there are too many closing parentheses `)`, so the string is invalid and `false` is returned.
+3. `low = max(low, 0)` ensures `low` never drops below 0 because `*` can also be treated as an empty string (meaning we never need less than 0 open brackets).
+4. After processing the entire string, the function checks `low == 0`, returning `true` if it is possible to have 0 unmatched open parentheses.
 
 ## Complexity
-- **Time Complexity:** `O(n)` — Where n is the length of the string. Each character is pushed onto and popped from the stack at most once.
-- **Space Complexity:** `O(n)` — Auxiliary stack memory. In the worst case (e.g. all opening brackets), the stack stores up to n elements.
+- **Time Complexity:** `O(n)` — The algorithm uses a single pass (`for (char c : s)`) over the string of length `n`. Each iteration performs constant time `O(1)` conditional checks, arithmetic operations, and calls `std::max`, leading to a total linear runtime.
+- **Space Complexity:** `O(1)` — Only two integer state variables (`low` and `high`) are allocated. Memory usage remains constant regardless of the length of the input string `s`.
 
 ## Edge Cases
-- **Premature Closing Bracket:** An input starting with a closing bracket (e.g. `"]"` or `")("`) detects an empty stack on the first pop attempt and returns `false` immediately.
-- **Mismatched Types:** Nested brackets of different types (e.g. `"(]"` or `"{[}]"`) fail the top-of-stack equality check and return `false`.
-- **Unclosed Brackets:** Trailing unmatched opening brackets (e.g. `"(("` or `"()("`) leave elements on the stack, causing `st.empty()` to evaluate to `false`.
-- **Odd String Length:** A balanced sequence must have an even number of delimiters; an odd length can never be valid.
+- String starting with `)`: `high` becomes -1 on the first iteration, immediately returning `false`.
+- String consisting only of `*`: `high` increases while `low` stays clamped at 0, returning `true` at the end.
+- Unmatched `(` at the end (e.g., `"((("`): `low` remains greater than 0 at the end of the loop, returning `false`.
+- Excess `)` that cannot be compensated by `*` (e.g., `"*))"`): `high` drops below 0, returning `false`.
 
 ## Solution
 ```cpp
