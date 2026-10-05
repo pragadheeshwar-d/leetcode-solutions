@@ -64,7 +64,7 @@
 | `0027` | [Remove Element](https://leetcode.com/problems/remove-element/) | `🟢 Easy` | C++ | [solution.cpp](0027-remove-element/solution.cpp) | [📖 Read Breakdown](0027-remove-element/README.md) | [💬 Discussion Post](https://leetcode.com/problems/remove-element/solutions/8550713/27-remove-element-technical-explanation-rnn1q) |
 | `0032` | [Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/) | `🔴 Hard` | C++ | [solution.cpp](0032-longest-valid-parentheses/solution.cpp) | [📖 Read Breakdown](0032-longest-valid-parentheses/README.md) | [💬 Discussion Post](https://leetcode.com/problems/longest-valid-parentheses/solutions/8557672/32-longest-valid-parentheses-technical-e-3os3) |
 | `0678` | [Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) | `🟡 Medium` | C++ | [solution.cpp](0678-valid-parenthesis-string/solution.cpp) | [📖 Read Breakdown](0678-valid-parenthesis-string/README.md) | [💬 Discussion Post](https://leetcode.com/problems/valid-parenthesis-string/solutions/8557676/678-valid-parenthesis-string-technical-e-zh7c) |
-| `0856` | [Score of Parentheses](https://leetcode.com/problems/score-of-parentheses/) | `🟡 Medium` | C++ | [solution.cpp](0856-score-of-parentheses/solution.cpp) | [📖 Read Breakdown](0856-score-of-parentheses/README.md) | - |
+| `0856` | [Score of Parentheses](https://leetcode.com/problems/score-of-parentheses/) | `🟡 Medium` | C++ | [solution.cpp](0856-score-of-parentheses/solution.cpp) | [📖 Read Breakdown](0856-score-of-parentheses/README.md) | [💬 Discussion Post](https://leetcode.com/problems/score-of-parentheses/solutions/8557683/856-score-of-parentheses-technical-expla-yjt9) |
 
 ---
 
