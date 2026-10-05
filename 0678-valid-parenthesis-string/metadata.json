@@ -8,8 +8,10 @@
   "solution_hash": "06dc601be3a106e7a4f0b392689f75975a8eda98c82b46ca6c79c23a3b7537ee",
   "explanation_file": "README.md",
   "explanation_status": "ready",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-10-04T02:26:11.363Z",
-  "updated_at": "2026-10-05T17:20:23.052Z",
-  "validation_status": "passed"
+  "updated_at": "2026-10-05T17:59:29.096Z",
+  "validation_status": "passed",
+  "discussion_url": "https://leetcode.com/problems/valid-parenthesis-string/solutions/8557676/678-valid-parenthesis-string-technical-e-zh7c",
+  "posted_at": "2026-10-05T17:59:29.091Z"
 }
