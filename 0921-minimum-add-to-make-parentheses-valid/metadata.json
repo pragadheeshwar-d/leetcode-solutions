@@ -8,8 +8,10 @@
   "solution_hash": "36fcb38c64a3440cd87c78babcf04779810af79f8f9d8ca5fe624d0a26e73705",
   "explanation_file": "README.md",
   "explanation_status": "ready",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-10-06T01:04:45.139Z",
-  "updated_at": "2026-10-06T01:05:32.037Z",
-  "validation_status": "passed"
+  "updated_at": "2026-10-06T01:07:25.563Z",
+  "validation_status": "passed",
+  "discussion_url": "https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/solutions/8558033/921-minimum-add-to-make-parentheses-vali-jper",
+  "posted_at": "2026-10-06T01:07:25.561Z"
 }
