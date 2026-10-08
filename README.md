@@ -2,8 +2,8 @@
 
 <div align="center">
 
-[![Problems Solved](https://img.shields.io/badge/Problems%20Solved-12-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)
-[![Easy](https://img.shields.io/badge/Easy-7%2F12-success?style=for-the-badge)](https://leetcode.com/)
+[![Problems Solved](https://img.shields.io/badge/Problems%20Solved-13-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)
+[![Easy](https://img.shields.io/badge/Easy-8%2F13-success?style=for-the-badge)](https://leetcode.com/)
 [![Medium](https://img.shields.io/badge/Medium-4-inactive?style=for-the-badge)](https://leetcode.com/)
 [![Hard](https://img.shields.io/badge/Hard-1-inactive?style=for-the-badge)](https://leetcode.com/)
 [![Language](https://img.shields.io/badge/Language-C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://en.cppreference.com/)
@@ -32,7 +32,7 @@
 
 | Metric | Current Status | Details |
 |:---|:---:|:---|
-| 🎯 **Total Problems Solved** | **12** | Implemented in C++ with optimal time/space complexity |
+| 🎯 **Total Problems Solved** | **13** | Implemented in C++ with optimal time/space complexity |
 | 🟢 **Easy** | **5 / 5** | `Palindrome Number`, `Roman to Integer`, `Longest Common Prefix`, `Valid Parentheses`, `Merge Two Sorted Lists` |
 | 🟡 **Medium** | **0** | Next milestone! |
 | 🔴 **Hard** | **0** | Upcoming challenge |
@@ -66,6 +66,7 @@
 | `0678` | [Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) | `🟡 Medium` | C++ | [solution.cpp](0678-valid-parenthesis-string/solution.cpp) | [📖 Read Breakdown](0678-valid-parenthesis-string/README.md) | [💬 Discussion Post](https://leetcode.com/problems/valid-parenthesis-string/solutions/8557676/678-valid-parenthesis-string-technical-e-zh7c) |
 | `0856` | [Score of Parentheses](https://leetcode.com/problems/score-of-parentheses/) | `🟡 Medium` | C++ | [solution.cpp](0856-score-of-parentheses/solution.cpp) | [📖 Read Breakdown](0856-score-of-parentheses/README.md) | [💬 Discussion Post](https://leetcode.com/problems/score-of-parentheses/solutions/8557683/856-score-of-parentheses-technical-expla-yjt9) |
 | `0921` | [Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/) | `🟡 Medium` | C++ | [solution.cpp](0921-minimum-add-to-make-parentheses-valid/solution.cpp) | [📖 Read Breakdown](0921-minimum-add-to-make-parentheses-valid/README.md) | [💬 Discussion Post](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/solutions/8558033/921-minimum-add-to-make-parentheses-vali-jper) |
+| `1021` | [Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/) | `🟢 Easy` | C++ | [solution.cpp](1021-remove-outermost-parentheses/solution.cpp) | - | - |
 
 ---
 
