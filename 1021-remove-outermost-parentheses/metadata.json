@@ -1,0 +1,14 @@
+{
+  "problem_id": 1021,
+  "title": "Remove Outermost Parentheses",
+  "slug": "remove-outermost-parentheses",
+  "language": "cpp",
+  "difficulty": "Easy",
+  "solution_file": "solution.cpp",
+  "solution_hash": "0db2f2f655c87852c1d3190ae4d5364364a31235fb0a23a089afa3df48a47c31",
+  "explanation_file": "README.md",
+  "explanation_status": "pending",
+  "post_status": "pending",
+  "created_at": "2026-10-08T16:35:46.860Z",
+  "updated_at": "2026-10-08T16:35:46.861Z"
+}
