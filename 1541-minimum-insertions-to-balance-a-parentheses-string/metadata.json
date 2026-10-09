@@ -1,0 +1,14 @@
+{
+  "problem_id": 1541,
+  "title": "Minimum Insertions to Balance a Parentheses String",
+  "slug": "minimum-insertions-to-balance-a-parentheses-string",
+  "language": "cpp",
+  "difficulty": "Medium",
+  "solution_file": "solution.cpp",
+  "solution_hash": "ea4bf4743b60e7e24606b111a43b7363a9cbf2050f987da8cf9826114374b6eb",
+  "explanation_file": "README.md",
+  "explanation_status": "pending",
+  "post_status": "pending",
+  "created_at": "2026-10-09T16:21:30.003Z",
+  "updated_at": "2026-10-09T16:21:30.004Z"
+}
