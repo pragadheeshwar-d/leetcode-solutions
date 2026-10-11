@@ -7,8 +7,9 @@
   "solution_file": "solution.cpp",
   "solution_hash": "ea4bf4743b60e7e24606b111a43b7363a9cbf2050f987da8cf9826114374b6eb",
   "explanation_file": "README.md",
-  "explanation_status": "pending",
+  "explanation_status": "ready",
   "post_status": "pending",
   "created_at": "2026-10-09T16:21:30.003Z",
-  "updated_at": "2026-10-09T16:21:30.004Z"
+  "updated_at": "2026-10-11T02:44:45.986Z",
+  "validation_status": "passed"
 }
