@@ -8,8 +8,10 @@
   "solution_hash": "0db2f2f655c87852c1d3190ae4d5364364a31235fb0a23a089afa3df48a47c31",
   "explanation_file": "README.md",
   "explanation_status": "ready",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-10-08T16:35:46.860Z",
-  "updated_at": "2026-10-11T02:43:23.434Z",
-  "validation_status": "passed"
+  "updated_at": "2026-10-11T02:44:47.265Z",
+  "validation_status": "passed",
+  "discussion_url": "https://leetcode.com/problems/remove-outermost-parentheses/solutions/8566443/1021-remove-outermost-parentheses-techni-vg06",
+  "posted_at": "2026-10-11T02:44:47.262Z"
 }
