@@ -69,8 +69,8 @@
 | `0921` | [Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/) | `🟡 Medium` | C++ | [solution.cpp](0921-minimum-add-to-make-parentheses-valid/solution.cpp) | [📖 Read Breakdown](0921-minimum-add-to-make-parentheses-valid/README.md) | [💬 Discussion Post](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/solutions/8558033/921-minimum-add-to-make-parentheses-vali-jper) |
 | `1021` | [Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/) | `🟢 Easy` | C++ | [solution.cpp](1021-remove-outermost-parentheses/solution.cpp) | [📖 Read Breakdown](1021-remove-outermost-parentheses/README.md) | - |
 | `1541` | [Minimum Insertions to Balance a Parentheses String](https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/) | `🟡 Medium` | C++ | [solution.cpp](1541-minimum-insertions-to-balance-a-parentheses-string/solution.cpp) | - | - |
-| `2333` | [Minimum Sum of Squared Difference](https://leetcode.com/problems/minimum-sum-of-squared-difference/) | `🟡 Medium` | C++ | [solution.cpp](2333-minimum-sum-of-squared-difference/solution.cpp) | - | - |
-| `2778` | [Sum of Squares of Special Elements ](https://leetcode.com/problems/sum-of-squares-of-special-elements/) | `🟢 Easy` | C++ | [solution.cpp](2778-sum-of-squares-of-special-elements/solution.cpp) | - | - |
+| `2333` | [Minimum Sum of Squared Difference](https://leetcode.com/problems/minimum-sum-of-squared-difference/) | `🟡 Medium` | C++ | [solution.cpp](2333-minimum-sum-of-squared-difference/solution.cpp) | [📖 Read Breakdown](2333-minimum-sum-of-squared-difference/README.md) | - |
+| `2778` | [Sum of Squares of Special Elements ](https://leetcode.com/problems/sum-of-squares-of-special-elements/) | `🟢 Easy` | C++ | [solution.cpp](2778-sum-of-squares-of-special-elements/solution.cpp) | [📖 Read Breakdown](2778-sum-of-squares-of-special-elements/README.md) | - |
 
 ---
 
