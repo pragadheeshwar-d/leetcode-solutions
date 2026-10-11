@@ -2,8 +2,8 @@
 
 <div align="center">
 
-[![Problems Solved](https://img.shields.io/badge/Problems%20Solved-15-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)
-[![Easy](https://img.shields.io/badge/Easy-8%2F15-success?style=for-the-badge)](https://leetcode.com/)
+[![Problems Solved](https://img.shields.io/badge/Problems%20Solved-16-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)
+[![Easy](https://img.shields.io/badge/Easy-9%2F16-success?style=for-the-badge)](https://leetcode.com/)
 [![Medium](https://img.shields.io/badge/Medium-5-inactive?style=for-the-badge)](https://leetcode.com/)
 [![Hard](https://img.shields.io/badge/Hard-2-inactive?style=for-the-badge)](https://leetcode.com/)
 [![Language](https://img.shields.io/badge/Language-C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://en.cppreference.com/)
@@ -32,7 +32,7 @@
 
 | Metric | Current Status | Details |
 |:---|:---:|:---|
-| 🎯 **Total Problems Solved** | **15** | Implemented in C++ with optimal time/space complexity |
+| 🎯 **Total Problems Solved** | **16** | Implemented in C++ with optimal time/space complexity |
 | 🟢 **Easy** | **5 / 5** | `Palindrome Number`, `Roman to Integer`, `Longest Common Prefix`, `Valid Parentheses`, `Merge Two Sorted Lists` |
 | 🟡 **Medium** | **0** | Next milestone! |
 | 🔴 **Hard** | **0** | Upcoming challenge |
@@ -69,6 +69,7 @@
 | `0921` | [Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/) | `🟡 Medium` | C++ | [solution.cpp](0921-minimum-add-to-make-parentheses-valid/solution.cpp) | [📖 Read Breakdown](0921-minimum-add-to-make-parentheses-valid/README.md) | [💬 Discussion Post](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/solutions/8558033/921-minimum-add-to-make-parentheses-vali-jper) |
 | `1021` | [Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/) | `🟢 Easy` | C++ | [solution.cpp](1021-remove-outermost-parentheses/solution.cpp) | - | - |
 | `1541` | [Minimum Insertions to Balance a Parentheses String](https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/) | `🟡 Medium` | C++ | [solution.cpp](1541-minimum-insertions-to-balance-a-parentheses-string/solution.cpp) | - | - |
+| `2778` | [Sum of Squares of Special Elements ](https://leetcode.com/problems/sum-of-squares-of-special-elements/) | `🟢 Easy` | C++ | [solution.cpp](2778-sum-of-squares-of-special-elements/solution.cpp) | - | - |
 
 ---
 
