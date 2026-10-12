@@ -70,7 +70,7 @@
 | `1021` | [Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/) | `🟢 Easy` | C++ | [solution.cpp](1021-remove-outermost-parentheses/solution.cpp) | [📖 Read Breakdown](1021-remove-outermost-parentheses/README.md) | [💬 Discussion Post](https://leetcode.com/problems/remove-outermost-parentheses/solutions/8566443/1021-remove-outermost-parentheses-techni-vg06) |
 | `1541` | [Minimum Insertions to Balance a Parentheses String](https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/) | `🟡 Medium` | C++ | [solution.cpp](1541-minimum-insertions-to-balance-a-parentheses-string/solution.cpp) | [📖 Read Breakdown](1541-minimum-insertions-to-balance-a-parentheses-string/README.md) | - |
 | `2333` | [Minimum Sum of Squared Difference](https://leetcode.com/problems/minimum-sum-of-squared-difference/) | `🟡 Medium` | C++ | [solution.cpp](2333-minimum-sum-of-squared-difference/solution.cpp) | [📖 Read Breakdown](2333-minimum-sum-of-squared-difference/README.md) | - |
-| `2778` | [Sum of Squares of Special Elements ](https://leetcode.com/problems/sum-of-squares-of-special-elements/) | `🟢 Easy` | C++ | [solution.cpp](2778-sum-of-squares-of-special-elements/solution.cpp) | [📖 Read Breakdown](2778-sum-of-squares-of-special-elements/README.md) | - |
+| `2778` | [Sum of Squares of Special Elements ](https://leetcode.com/problems/sum-of-squares-of-special-elements/) | `🟢 Easy` | C++ | [solution.cpp](2778-sum-of-squares-of-special-elements/solution.cpp) | [📖 Read Breakdown](2778-sum-of-squares-of-special-elements/README.md) | [💬 Discussion Post](https://leetcode.com/problems/sum-of-squares-of-special-elements/solutions/8568599/2778-sum-of-squares-of-special-elements-pwkff) |
 
 ---
 
