@@ -1,0 +1,14 @@
+{
+  "problem_id": 3727,
+  "title": "Maximum Alternating Sum of Squares",
+  "slug": "maximum-alternating-sum-of-squares",
+  "language": "cpp",
+  "difficulty": "Medium",
+  "solution_file": "solution.cpp",
+  "solution_hash": "db0a27cfc79226fc02f5a9aee6389efdf3b7ed77aa62f5943cf24d4662b84876",
+  "explanation_file": "README.md",
+  "explanation_status": "pending",
+  "post_status": "pending",
+  "created_at": "2026-10-13T05:45:47.172Z",
+  "updated_at": "2026-10-13T05:45:47.173Z"
+}
