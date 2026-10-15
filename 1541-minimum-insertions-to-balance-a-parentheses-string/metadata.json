@@ -8,8 +8,10 @@
   "solution_hash": "ea4bf4743b60e7e24606b111a43b7363a9cbf2050f987da8cf9826114374b6eb",
   "explanation_file": "README.md",
   "explanation_status": "ready",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-10-09T16:21:30.003Z",
-  "updated_at": "2026-10-11T02:44:45.986Z",
-  "validation_status": "passed"
+  "updated_at": "2026-10-15T14:29:12.027Z",
+  "validation_status": "passed",
+  "discussion_url": "https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/solutions/8574021/1541-minimum-insertions-to-balance-a-par-anwv",
+  "posted_at": "2026-10-15T14:29:12.022Z"
 }
