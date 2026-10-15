@@ -1,0 +1,14 @@
+{
+  "problem_id": 2913,
+  "title": "Subarrays Distinct Element Sum of Squares I",
+  "slug": "subarrays-distinct-element-sum-of-squares-i",
+  "language": "cpp",
+  "difficulty": "Easy",
+  "solution_file": "solution.cpp",
+  "solution_hash": "dc731540a0882ac39fc6f72432986d6e8ccc780dc2f21ee3e98fb6f2a66bbb41",
+  "explanation_file": "README.md",
+  "explanation_status": "pending",
+  "post_status": "pending",
+  "created_at": "2026-10-15T14:23:21.449Z",
+  "updated_at": "2026-10-15T14:23:21.450Z"
+}
