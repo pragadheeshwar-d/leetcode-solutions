@@ -8,8 +8,10 @@
   "solution_hash": "0451a70014aefeb95c3e86e6259e6fb3c5a7b18335994b5bd981edba549d2ee5",
   "explanation_file": "README.md",
   "explanation_status": "ready",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-10-11T02:23:16.364Z",
-  "updated_at": "2026-10-11T02:43:50.125Z",
-  "validation_status": "passed"
+  "updated_at": "2026-10-15T14:29:29.745Z",
+  "validation_status": "passed",
+  "discussion_url": "https://leetcode.com/problems/minimum-sum-of-squared-difference/solutions/8574024/2333-minimum-sum-of-squared-difference-t-i0vf",
+  "posted_at": "2026-10-15T14:29:29.741Z"
 }
