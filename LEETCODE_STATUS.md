@@ -2,8 +2,8 @@
 
 <div align="center">
 
-[![Problems Solved](https://img.shields.io/badge/Problems%20Solved-20-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)
-[![Easy](https://img.shields.io/badge/Easy-9%2F20-success?style=for-the-badge)](https://leetcode.com/)
+[![Problems Solved](https://img.shields.io/badge/Problems%20Solved-21-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)
+[![Easy](https://img.shields.io/badge/Easy-10%2F21-success?style=for-the-badge)](https://leetcode.com/)
 [![Medium](https://img.shields.io/badge/Medium-8-inactive?style=for-the-badge)](https://leetcode.com/)
 [![Hard](https://img.shields.io/badge/Hard-3-inactive?style=for-the-badge)](https://leetcode.com/)
 [![Language](https://img.shields.io/badge/Language-C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://en.cppreference.com/)
@@ -32,7 +32,7 @@
 
 | Metric | Current Status | Details |
 |:---|:---:|:---|
-| 🎯 **Total Problems Solved** | **20** | Implemented in C++ with optimal time/space complexity |
+| 🎯 **Total Problems Solved** | **21** | Implemented in C++ with optimal time/space complexity |
 | 🟢 **Easy** | **5 / 5** | `Palindrome Number`, `Roman to Integer`, `Longest Common Prefix`, `Valid Parentheses`, `Merge Two Sorted Lists` |
 | 🟡 **Medium** | **0** | Next milestone! |
 | 🔴 **Hard** | **0** | Upcoming challenge |
@@ -72,6 +72,7 @@
 | `2333` | [Minimum Sum of Squared Difference](https://leetcode.com/problems/minimum-sum-of-squared-difference/) | `🟡 Medium` | C++ | [solution.cpp](2333-minimum-sum-of-squared-difference/solution.cpp) | [📖 Read Breakdown](2333-minimum-sum-of-squared-difference/README.md) | - |
 | `2778` | [Sum of Squares of Special Elements ](https://leetcode.com/problems/sum-of-squares-of-special-elements/) | `🟢 Easy` | C++ | [solution.cpp](2778-sum-of-squares-of-special-elements/solution.cpp) | [📖 Read Breakdown](2778-sum-of-squares-of-special-elements/README.md) | [💬 Discussion Post](https://leetcode.com/problems/sum-of-squares-of-special-elements/solutions/8568599/2778-sum-of-squares-of-special-elements-pwkff) |
 | `2897` | [Apply Operations on Array to Maximize Sum of Squares](https://leetcode.com/problems/apply-operations-on-array-to-maximize-sum-of-squares/) | `🔴 Hard` | C++ | [solution.cpp](2897-apply-operations-on-array-to-maximize-sum-of-squares/solution.cpp) | - | - |
+| `2913` | [Subarrays Distinct Element Sum of Squares I](https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-i/) | `🟢 Easy` | C++ | [solution.cpp](2913-subarrays-distinct-element-sum-of-squares-i/solution.cpp) | - | - |
 | `3723` | [Maximize Sum of Squares of Digits](https://leetcode.com/problems/maximize-sum-of-squares-of-digits/) | `🟡 Medium` | C++ | [solution.cpp](3723-maximize-sum-of-squares-of-digits/solution.cpp) | - | - |
 | `3727` | [Maximum Alternating Sum of Squares](https://leetcode.com/problems/maximum-alternating-sum-of-squares/) | `🟡 Medium` | C++ | [solution.cpp](3727-maximum-alternating-sum-of-squares/solution.cpp) | - | - |
 
