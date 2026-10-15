@@ -8,8 +8,10 @@
   "solution_hash": "dc731540a0882ac39fc6f72432986d6e8ccc780dc2f21ee3e98fb6f2a66bbb41",
   "explanation_file": "README.md",
   "explanation_status": "ready",
-  "post_status": "pending",
+  "post_status": "posted",
   "created_at": "2026-10-15T14:23:21.449Z",
-  "updated_at": "2026-10-15T14:30:34.878Z",
-  "validation_status": "passed"
+  "updated_at": "2026-10-15T14:33:13.467Z",
+  "validation_status": "passed",
+  "discussion_url": "https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-i/solutions/8574032/2913-subarrays-distinct-element-sum-of-s-rwer",
+  "posted_at": "2026-10-15T14:33:13.463Z"
 }
