@@ -1,0 +1,14 @@
+{
+  "problem_id": 3551,
+  "title": "Minimum Swaps to Sort by Digit Sum",
+  "slug": "minimum-swaps-to-sort-by-digit-sum",
+  "language": "cpp",
+  "difficulty": "Medium",
+  "solution_file": "solution.cpp",
+  "solution_hash": "c77ac7918bf5e0a9414c638227d53e56b3985dd4c222a71b4f4ccca64c817055",
+  "explanation_file": "README.md",
+  "explanation_status": "pending",
+  "post_status": "pending",
+  "created_at": "2026-10-17T13:54:53.438Z",
+  "updated_at": "2026-10-17T13:54:53.439Z"
+}
