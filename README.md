@@ -2,9 +2,9 @@
 
 <div align="center">
 
-[![Problems Solved](https://img.shields.io/badge/Problems%20Solved-22-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)
-[![Easy](https://img.shields.io/badge/Easy-10%2F22-success?style=for-the-badge)](https://leetcode.com/)
-[![Medium](https://img.shields.io/badge/Medium-8-inactive?style=for-the-badge)](https://leetcode.com/)
+[![Problems Solved](https://img.shields.io/badge/Problems%20Solved-23-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)
+[![Easy](https://img.shields.io/badge/Easy-10%2F23-success?style=for-the-badge)](https://leetcode.com/)
+[![Medium](https://img.shields.io/badge/Medium-9-inactive?style=for-the-badge)](https://leetcode.com/)
 [![Hard](https://img.shields.io/badge/Hard-4-inactive?style=for-the-badge)](https://leetcode.com/)
 [![Language](https://img.shields.io/badge/Language-C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://en.cppreference.com/)
 [![System Architecture](https://img.shields.io/badge/System-How%20It%20Works%20%E2%9E%94-blueviolet?style=for-the-badge&logo=githubactions&logoColor=white)](HOW_IT_WORKS.md)
@@ -32,7 +32,7 @@
 
 | Metric | Current Status | Details |
 |:---|:---:|:---|
-| 🎯 **Total Problems Solved** | **22** | Implemented in C++ with optimal time/space complexity |
+| 🎯 **Total Problems Solved** | **23** | Implemented in C++ with optimal time/space complexity |
 | 🟢 **Easy** | **5 / 5** | `Palindrome Number`, `Roman to Integer`, `Longest Common Prefix`, `Valid Parentheses`, `Merge Two Sorted Lists` |
 | 🟡 **Medium** | **0** | Next milestone! |
 | 🔴 **Hard** | **0** | Upcoming challenge |
@@ -74,6 +74,7 @@
 | `2897` | [Apply Operations on Array to Maximize Sum of Squares](https://leetcode.com/problems/apply-operations-on-array-to-maximize-sum-of-squares/) | `🔴 Hard` | C++ | [solution.cpp](2897-apply-operations-on-array-to-maximize-sum-of-squares/solution.cpp) | - | - |
 | `2913` | [Subarrays Distinct Element Sum of Squares I](https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-i/) | `🟢 Easy` | C++ | [solution.cpp](2913-subarrays-distinct-element-sum-of-squares-i/solution.cpp) | [📖 Read Breakdown](2913-subarrays-distinct-element-sum-of-squares-i/README.md) | [💬 Discussion Post](https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-i/solutions/8574032/2913-subarrays-distinct-element-sum-of-s-rwer) |
 | `2916` | [Subarrays Distinct Element Sum of Squares II](https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-ii/) | `🔴 Hard` | C++ | [solution.cpp](2916-subarrays-distinct-element-sum-of-squares-ii/solution.cpp) | - | - |
+| `3551` | [Minimum Swaps to Sort by Digit Sum](https://leetcode.com/problems/minimum-swaps-to-sort-by-digit-sum/) | `🟡 Medium` | C++ | [solution.cpp](3551-minimum-swaps-to-sort-by-digit-sum/solution.cpp) | - | - |
 | `3723` | [Maximize Sum of Squares of Digits](https://leetcode.com/problems/maximize-sum-of-squares-of-digits/) | `🟡 Medium` | C++ | [solution.cpp](3723-maximize-sum-of-squares-of-digits/solution.cpp) | [📖 Read Breakdown](3723-maximize-sum-of-squares-of-digits/README.md) | [💬 Discussion Post](https://leetcode.com/problems/maximize-sum-of-squares-of-digits/solutions/8574029/3723-maximize-sum-of-squares-of-digits-t-q2xo) |
 | `3727` | [Maximum Alternating Sum of Squares](https://leetcode.com/problems/maximum-alternating-sum-of-squares/) | `🟡 Medium` | C++ | [solution.cpp](3727-maximum-alternating-sum-of-squares/solution.cpp) | - | - |
 
